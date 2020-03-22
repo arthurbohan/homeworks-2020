@@ -12,9 +12,9 @@ def calculation(hours, minutes)
   raise "This #{minutes} isn't valid!" if minutes.negative? || minutes > 60
 
   # count
-  actualminutes = minutes * 6
-  actualhours = (hours * 30) + (minutes / 2.0)
-  (actualhours - actualminutes).abs
+  actual_minutes = minutes * 6
+  actual_hours = (hours * 30) + (minutes / 2.0)
+  (actual_hours - actual_minutes).abs
 end
 
 result = calculation(hours, minutes)
