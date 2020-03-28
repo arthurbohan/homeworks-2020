@@ -12,6 +12,8 @@ def logs
 end
 
 def during_time(logs)
+  return [0] if logs.size <= 1
+
   datetime = logs.map do |log|
     DateTime.strptime(log[TIME], '%Y-%m-%d %H:%M:%S.%L')
   end
