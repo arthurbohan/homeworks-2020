@@ -2,23 +2,19 @@
 
 # student
 class Student
-  attr_reader :name, :surname
+  attr_reader :name, :surname, :homeworks
 
   def initialize(name:, surname:)
     @name = name
     @surname = surname
-    @student_homeworks = []
+    @homeworks = []
     @mentors = []
   end
 
   def submit_homework!(homework)
     submitted_homework = Homework.new(homework)
-    @student_homeworks << submitted_homework
+    @homeworks << submitted_homework
     notification(homework_notification(homework))
-  end
-
-  def homeworks
-    p @student_homeworks
   end
 
   def homework_notification(homework)
