@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # homework
 class Homework
   attr_reader :homework_data

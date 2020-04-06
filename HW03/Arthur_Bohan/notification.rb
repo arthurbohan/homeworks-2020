@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # notification
 class Notification
   attr_reader :notification_data

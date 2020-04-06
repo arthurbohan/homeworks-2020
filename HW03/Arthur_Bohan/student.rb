@@ -1,31 +1,35 @@
-# frozen_string_literal: true
-
 # student
 class Student
-  attr_reader :name, :surname, :homeworks
+  attr_reader :name, :surname, :homeworks, :notifications
+  attr_accessor :mentors
 
   def initialize(name:, surname:)
     @name = name
     @surname = surname
     @homeworks = []
     @mentors = []
+    @notifications = []
   end
 
   def submit_homework!(homework)
     submitted_homework = Homework.new(homework)
     @homeworks << submitted_homework
-    notification(homework_notification(homework))
+    notify_mentors(homework)
   end
 
-  def homework_notification(homework)
-    puts "#{name} #{surname} submit: #{homework}"
+  def notify_mentors(homework)
+    mentors.each do |mentor|
+      mentor.notify_mentor(self, homework)
+      mentor.notifications << Notification.new(homework)
+    end
   end
 
-  def notification(request)
-    @mentor&.notification(request)
+  def notify_student(mentor, student)
+    puts "#{mentor.name} #{mentor.surname}
+ subscribe to #{student.name} #{student.surname}".delete("\n")
   end
 
-  def submitted_mentor(current_mentor)
-    @mentor = current_mentor
+  def read_notification!
+    @notifications.clear
   end
 end
