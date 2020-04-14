@@ -1,10 +1,11 @@
 require_relative '../my_array_methods.rb'
 
 describe Array do
+  let(:empty_array) { [] }
   let(:array) { [1, 2, 3] }
 
   describe '#my_select' do
-    context 'when select spesific number from array' do
+    context 'when select specific number from array' do
       let(:expected_result) { [1] }
 
       it 'returns a specific element from array' do
@@ -52,12 +53,21 @@ describe Array do
   end
 
   describe '#my_each' do
-    context 'when method works correct' do
-      let(:new_array) { [] }
+    let(:new_array) { [] }
 
+    context 'when array has elements' do
       it 'sorts out elements and passed them to the block' do
         array.my_each { |elem| new_array << (elem - 1) }
         expect(new_array).to eq [0, 1, 2]
+      end
+    end
+
+    context 'when array is empty' do
+      let(:expected_result) { [] }
+
+      it 'passed empty array to the block' do
+        empty_array.my_each { |elem| new_array << (elem - 1) }
+        expect(new_array).to eq expected_result
       end
     end
   end

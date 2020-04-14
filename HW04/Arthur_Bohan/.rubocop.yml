@@ -2,4 +2,4 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Metrics/BlockLength:
-  Max: 50
+  Max: 60
